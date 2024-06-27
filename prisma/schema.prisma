@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+enum Sex {
+  M
+  F
+}
+enum MessageStatus {
+  SEEN
+  UNSEEN
+}
+enum Status {
+  ONLINE
+  OFFLINE
+}
+model User {
+  id                String     @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  email             String     @unique
+  password          String
+  age               Int
+  sex               Sex
+  status            Status     @default(OFFLINE)
+  ProfilePic        String
+  ProfilePicPublic  String
+  Picture           String[]
+  PicturePublic     String[]
+  messages          Message[]
+  chatIds           String[]   @db.ObjectId
+  chats             Chat[]     @relation(fields: [chatIds], references: [id])
+  credits           Int        @default(100) 
+  createdAt         DateTime   @default(now())
+}
+
+model Message {
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  content    String
+  status     MessageStatus @default(UNSEEN)
+  sender     User          @relation(fields: [senderId], references: [id])
+  senderId   String        @db.ObjectId
+  chat       Chat          @relation(fields: [chatId], references: [id])
+  chatId     String        @db.ObjectId
+  createdAt  DateTime      @default(now())
+}
+
+model Chat {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  messages      Message[]
+  userIds       String[]   @db.ObjectId
+  participants  User[]     @relation(fields: [userIds], references: [id])
+}
+

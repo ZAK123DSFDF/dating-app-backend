@@ -10,9 +10,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   // app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
-  app.useWebSocketAdapter(new IoAdapter(app));
+  // app.useWebSocketAdapter(new IoAdapter(app));
   app.enableCors({
-    origin: 'https://dating-app-front.vercel.app',
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,

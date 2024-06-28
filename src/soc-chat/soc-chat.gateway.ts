@@ -32,6 +32,7 @@ export class SocChatGateway
   @WebSocketServer() server: Server;
   private connectedUsers = new Map<string, CustomSocket>();
   onModuleInit() {
+    console.log('this is websockets and its working');
     this.socChatService.setAllUsersOffline();
   }
   async handleConnection(client: CustomSocket) {

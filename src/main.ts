@@ -9,8 +9,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
-  // app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
-  // app.useWebSocketAdapter(new IoAdapter(app));
+  app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
+  app.useWebSocketAdapter(new IoAdapter(app));
   app.enableCors({
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],

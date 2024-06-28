@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
-  app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
+  // app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
   app.useWebSocketAdapter(new IoAdapter(app));
   app.enableCors({
     origin: 'https://dating-app-front.vercel.app',

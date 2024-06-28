@@ -19,6 +19,7 @@ import { OnModuleInit } from '@nestjs/common';
       'https://dating-app-front.vercel.app',
       'http://localhost:3000',
       'https://dating-app-front.onrender.com',
+      'https://dating-app-front-two.vercel.app',
     ],
     credentials: true,
   },

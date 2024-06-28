@@ -15,7 +15,11 @@ import { OnModuleInit } from '@nestjs/common';
 @WebSocketGateway({
   handlePreflightRequest: false,
   cors: {
-    origin: ['http://localhost:3000'],
+    origin: [
+      'https://dating-app-front.vercel.app',
+      'http://localhost:3000',
+      'https://dating-app-front.onrender.com',
+    ],
     credentials: true,
   },
 })

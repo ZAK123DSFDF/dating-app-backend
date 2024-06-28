@@ -3,16 +3,10 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma.service';
+
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 @Module({
   controllers: [AuthController],
-  providers: [
-    AuthService,
-    JwtStrategy,
-    JwtService,
-    PrismaService,
-    CloudinaryService,
-  ],
+  providers: [AuthService, JwtStrategy, JwtService, CloudinaryService],
 })
 export class AuthModule {}

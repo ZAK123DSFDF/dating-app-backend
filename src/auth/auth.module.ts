@@ -5,8 +5,15 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtService } from '@nestjs/jwt';
 
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { PrismaService } from 'src/prisma.service';
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, JwtService, CloudinaryService],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    JwtService,
+    CloudinaryService,
+    PrismaService,
+  ],
 })
 export class AuthModule {}

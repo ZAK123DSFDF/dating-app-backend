@@ -6,6 +6,7 @@ import { ChatModule } from './chat/chat.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { SocChatModule } from './soc-chat/soc-chat.module';
 import { StripeModule } from './stripe/stripe.module';
+import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
@@ -16,6 +17,6 @@ import { StripeModule } from './stripe/stripe.module';
     StripeModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}

@@ -39,6 +39,7 @@ export class AuthController {
         message: 'login successful',
         id: user.id,
         email: user.email,
+        token,
       });
     } catch (error) {
       console.log(error);
@@ -93,7 +94,7 @@ export class AuthController {
   @Get('logout')
   async logout(@Response() res) {
     try {
-      res.clearCookie('token');
+      // res.clearCookie('token');
       console.log('logout successful');
       res.status(200).json({
         message: 'logout successful',

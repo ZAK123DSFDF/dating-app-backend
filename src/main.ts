@@ -12,7 +12,7 @@ async function bootstrap() {
   app.use('/stripe/webhook', bodyParser.raw({ type: 'application/json' }));
   app.useWebSocketAdapter(new IoAdapter(app));
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: 'https://dating-app-front.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,

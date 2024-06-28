@@ -34,7 +34,7 @@ export class AuthController {
   async login(@Request() req, @Response() res, @Body() LoginDto: LoginDto) {
     try {
       const { user, token } = await this.auth.validateUser(LoginDto);
-      res.cookie('token', token, { httpOnly: true });
+      // res.cookie('token', token, { httpOnly: true, secure: true });
       res.status(200).json({
         message: 'login successful',
         id: user.id,

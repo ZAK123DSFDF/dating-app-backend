@@ -26,7 +26,7 @@ export class ChatController {
     try {
       const id = await this.jwt.decode(req.cookies['token']).user;
       const AllChat = await this.chat.findChatsByUserId(id, name);
-      console.log('this is all chats',AllChat);
+      console.log('this is all chats', AllChat);
       res.status(200).json(AllChat);
     } catch (error) {
       console.log(error);
@@ -106,11 +106,11 @@ export class ChatController {
     }
   }
   @Delete('allChats')
-  async DeleteAllChats(){
-    try{
-      const deletedChats=await this.chat.deleteAllChats();
+  async DeleteAllChats() {
+    try {
+      const deletedChats = await this.chat.deleteAllChats();
       return deletedChats;
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   }

@@ -117,7 +117,9 @@ export class AuthController {
       });
     } catch (error) {
       console.log(error);
-      res.status(401).json(error);
+      res.status(200).json({
+        isAuthenticated: false,
+      });
     }
   }
   @Get('allUsers')

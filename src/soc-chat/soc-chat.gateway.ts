@@ -13,6 +13,7 @@ import { CustomSocket } from 'types';
 import { OnModuleInit } from '@nestjs/common';
 
 @WebSocketGateway({
+  transports: ['websocket', 'polling'],
   handlePreflightRequest: false,
   cors: {
     origin: process.env.BASE_URL,

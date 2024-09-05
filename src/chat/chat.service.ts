@@ -30,7 +30,7 @@ export class ChatService {
           messages: { orderBy: { createdAt: 'desc' }, take: 1 },
         },
       });
-      console.log('user chats',userChats)
+      console.log('user chats', userChats);
       // Filter chats by exact participant name if provided
       const filteredChats = participantName
         ? userChats.filter((chat) =>
@@ -39,7 +39,7 @@ export class ChatService {
             ),
           )
         : userChats;
-      console.log('this is the chat',filteredChats);
+      console.log('this is the chat', filteredChats);
       return filteredChats;
     } catch (error) {
       console.error(error);
@@ -80,7 +80,9 @@ export class ChatService {
       const chat = await this.prisma.chat.findUnique({
         where: { id },
         include: {
-          messages: true,
+          messages: {
+            include: { sender: true },
+          },
           participants: {
             where: {
               NOT: { id: { equals: userId } },
@@ -159,7 +161,7 @@ export class ChatService {
     const deleteMessages = this.prisma.message.deleteMany();
     return deleteMessages;
   }
-  async deleteAllChats(){
-    const deleteChats=this.prisma.chat.deleteMany()
+  async deleteAllChats() {
+    const deleteChats = this.prisma.chat.deleteMany();
   }
 }
